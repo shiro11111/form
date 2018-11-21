@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {forbiddenNameValidator} from '../forbidden-name-validator.directive';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class FormComponent implements OnInit {
     this.form = this.fb.group({
       name: this.fb.control(null, [
         Validators.required,
-        Validators.pattern('^[a-zA-Z]*$')]),
+        Validators.pattern('^[a-zA-Z]*$')
+      ]),
       pesel: this.fb.control( null,[
           Validators.required,
           Validators.minLength(11),
