@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Pesel</mat-label>
+    <input matInput type="text" formControlName="pesel">
+  </mat-form-field>
+</form>
+
+
+<div *ngIf="form.get('pesel').errors?.minlength">
+  Input too short!
+</div>
+<div *ngIf="form.get('pesel').errors?.pattern">
+  Only numbers, please!
+</div>
+<div *ngIf="form.get('pesel').errors?.required && form.get('pesel').touched">
+  Please enter your pesel!
+</div>
+<div *ngIf="form.get('name').errors?.required && form.get('name').touched">
+  Please enter your name!
+</div>
+
+
+
