@@ -18,10 +18,13 @@ export class FormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      name: this.fb.control(null, [Validators.required]),
+      name: this.fb.control(null, [
+        Validators.required,
+        Validators.pattern('^[a-zA-Z]*$')]),
       pesel: this.fb.control( null,[
           Validators.required,
           Validators.minLength(11),
+          Validators.maxLength(11),
           Validators.pattern('^[0-9]*$')
         ]
       )

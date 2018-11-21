@@ -14,6 +14,9 @@
 <div *ngIf="form.get('pesel').errors?.minlength">
   Input too short!
 </div>
+<div *ngIf="form.get('pesel').errors?.maxlength">
+Input too long!
+</div>
 <div *ngIf="form.get('pesel').errors?.pattern">
   Only numbers, please!
 </div>
@@ -22,6 +25,9 @@
 </div>
 <div *ngIf="form.get('name').errors?.required && form.get('name').touched">
   Please enter your name!
+</div>
+<div *ngIf="form.get('name').errors?.pattern">
+  Only letters, please!
 </div>
 
 
