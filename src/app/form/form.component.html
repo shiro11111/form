@@ -3,7 +3,10 @@
     <mat-label>Name</mat-label>
     <input matInput type="text" formControlName="name" appForbiddenName="Pikachu">
     <mat-error *ngIf="form.get('name').invalid">{{getErrorMessage()}}</mat-error>
+    <mat-error *ngIf="form.get('name').errors?.pattern">Only letters allowed</mat-error>
+    <mat-error *ngIf="form.get('name').errors?.forbiddenName">Can't use that name!</mat-error>
   </mat-form-field>
+
 
   <mat-form-field>
     <mat-label>Pesel</mat-label>
@@ -22,12 +25,13 @@ Wrong input!
   Only numbers, please!
 </div>
 
-<div *ngIf="form.get('name').errors?.forbiddenName">
-  Can't use that name!
-</div>
-<div *ngIf="form.get('name').errors?.pattern">
-  Only letters, please!
-</div>
+
+<!--<div *ngIf="form.get('name').errors?.forbiddenName">-->
+  <!--Can't use that name!-->
+<!--</div>-->
+<!--<div *ngIf="form.get('name').errors?.pattern">-->
+  <!--Only letters, please!-->
+<!--</div>-->
 
 <!--<pre>{{form.get('name').errors | json}}</pre>-->
 
