@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {FormComponent} from './form/form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule, MatInputModule} from '@angular/material';
-import {ForbiddenValidatorDirective} from './forbidden-name.directive';
+import {ForbiddenValidatorDirective} from './forbidden-name.validator';
 
 
 @NgModule({

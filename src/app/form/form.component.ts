@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {forbiddenNameValidator} from '../forbidden-name-validator.directive';
-import { ForbiddenValidatorDirective } from '../forbidden-name.directive';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatePesel } from '../pesel.validator';
 
 
 @Component({
@@ -26,8 +25,7 @@ export class FormComponent implements OnInit {
       ]),
       pesel: this.fb.control( null,[
           Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
+          ValidatePesel,
           Validators.pattern('^[0-9]*$')
         ]
       )
@@ -42,7 +40,7 @@ export class FormComponent implements OnInit {
 
   getPeselErrorMessage() {
     return this.form.get('pesel').hasError('required') ? 'You must enter a value' :
-      this.form.get('pesel').hasError('pesel') ? 'Not a valid pesel' :
+      this.form.get('pesel').hasError('required') ? 'Not a valid pesel' :
         '';
   }
 }

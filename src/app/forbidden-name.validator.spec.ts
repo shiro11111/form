@@ -1,4 +1,4 @@
-import { ForbiddenNameDirective } from './forbidden-name.directive';
+import { ForbiddenNameDirective } from './forbidden-name.validator';
 
 describe('ForbiddenNameDirective', () => {
   it('should create an instance', () => {

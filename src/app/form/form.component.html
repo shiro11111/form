@@ -13,22 +13,15 @@
 </form>
 
 
-<div *ngIf="form.get('pesel').errors?.minlength">
-  Input too short!
+
+<div *ngIf="form.get('pesel').errors?.invalidPesel">
+Wrong input!
 </div>
-<div *ngIf="form.get('pesel').errors?.maxlength">
-Input too long!
-</div>
+
 <div *ngIf="form.get('pesel').errors?.pattern">
   Only numbers, please!
 </div>
-<!--<div *ngIf="form.get('pesel').errors?.required && form.get('pesel').touched">-->
-  <!--Please enter your pesel!-->
-<!--</div>-->
 
-<!--<div *ngIf="form.get('name').errors?.required && form.get('name').touched">-->
-  <!--Please enter your name!-->
-<!--</div>-->
 <div *ngIf="form.get('name').errors?.forbiddenName">
   Can't use that name!
 </div>
