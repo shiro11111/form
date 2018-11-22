@@ -1,9 +1,5 @@
-import {Directive} from '@angular/core';
-import {AbstractControl, ValidatorFn} from '@angular/forms';
 
-@Directive({
-  selector: '[appForbiddenNameValidator]'
-})
+import {AbstractControl, ValidatorFn} from '@angular/forms';
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {

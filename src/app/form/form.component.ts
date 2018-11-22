@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {forbiddenNameValidator} from '../forbidden-name-validator.directive';
+import { ForbiddenValidatorDirective } from '../forbidden-name.directive';
 
 
 @Component({
@@ -31,5 +32,17 @@ export class FormComponent implements OnInit {
         ]
       )
     });
+  }
+
+  getErrorMessage() {
+    return this.form.get('name').hasError('required') ? 'You must enter a value' :
+      this.form.get('name').hasError('name') ? 'Not a valid name' :
+        '';
+  }
+
+  getPeselErrorMessage() {
+    return this.form.get('pesel').hasError('required') ? 'You must enter a value' :
+      this.form.get('pesel').hasError('pesel') ? 'Not a valid pesel' :
+        '';
   }
 }
