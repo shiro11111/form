@@ -16,8 +16,9 @@
   </mat-form-field>
 </form>
 
-<button onClick="getBirthDate">Check</button>
-<p></p>
+<button (click)="onGetPeselInfo()">Check</button>
+<div *ngIf="peselInfo">{{ peselInfo }}</div>
+<p>{{ getPeselData('88555501832') }}</p>
 
 
 

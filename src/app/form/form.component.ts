@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatePesel } from '../pesel.validator';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ValidatePesel} from '../pesel.validator';
+import {filter} from 'rxjs/operators';
 
 
 @Component({
@@ -11,10 +12,19 @@ import { ValidatePesel } from '../pesel.validator';
 export class FormComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  peselInfo: string;
+
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit() {
     this.createForm();
+
+    this.form.get('pesel').valueChanges.pipe(
+      filter((value: string) => !!value)
+    ).subscribe((value: string) => {
+      console.log(ValidatePesel(this.form.get('pesel')));
+    });
   }
 
   createForm() {
@@ -23,9 +33,8 @@ export class FormComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[a-zA-Z]*$')
       ]),
-      pesel: this.fb.control( null,[
+      pesel: this.fb.control(null, [
           Validators.required,
-          ValidatePesel,
           Validators.pattern('^[0-9]*$')
         ]
       )
@@ -44,7 +53,7 @@ export class FormComponent implements OnInit {
         '';
   }
 
-    getPeselData(peselArg: string): boolean {
+  getPeselData(peselArg: string): boolean {
     const pesel = peselArg.split('').slice(0, 10);
 
     const controlNumber = peselArg.split('').pop();
@@ -52,8 +61,8 @@ export class FormComponent implements OnInit {
     const multipliers = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
 
     let sum = 0;
-    for (let i = 0; i < pesel.length; i++ ) {
-      sum += pesel[i] * multipliers[i];
+    for (let i = 0; i < pesel.length; i++) {
+      sum += +pesel[i] * multipliers[i];
     }
 
     const result = (10 - (sum % 10)) % 10;
@@ -61,15 +70,20 @@ export class FormComponent implements OnInit {
     return +result === +controlNumber;
   }
 
-    getBirthDate(peselArg) {
+  getBirthDate(peselArg): string {
     return 'Date of birth is ' + peselArg.substring(0, 6);
   }
 
-    getGender(peselArg) {
+  getGender(peselArg): string {
     if (peselArg.charAt(9) % 2 === 0) {
       return 'I am a woman';
     } else {
       return 'I am a man';
     }
+  }
+
+  onGetPeselInfo(): void {
+    const value = this.form.get('pesel').value;
+    this.peselInfo = this.getBirthDate(value) + this.getGender(value);
   }
 }
