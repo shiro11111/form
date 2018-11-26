@@ -92,20 +92,20 @@ export class FormComponent implements OnInit {
   getBirthYearFromPesel(pesel: string): string {
     let birthYear = '';
     if (+pesel.charAt(2) === 0 || 1) {
-      birthYear = '19' + pesel.substring(0,2);
+      birthYear = '19' + pesel.substring(0, 2);
     } else if (+pesel.charAt(2) === 2 || 3) {
-      birthYear = '20' + pesel.substring(0,2);
+      birthYear = '20' + pesel.substring(0, 2);
     } else if(+pesel.charAt(2) === 4 || 5) {
-      birthYear = '21' + pesel.substring(0,2);
+      birthYear = '21' + pesel.substring(0, 2);
     } else if(+pesel.charAt(2) === 6 || 7) {
-      birthYear = '22' + pesel.substring(0,2);
+      birthYear = '22' + pesel.substring(0, 2);
     }
     return birthYear;
   }
 
   getMonthFromPesel(pesel: string): string {
     let month = '';
-
+  if()
   }
 }
 
