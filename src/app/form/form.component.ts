@@ -53,22 +53,22 @@ export class FormComponent implements OnInit {
         '';
   }
 
-  getPeselData(peselArg: string): boolean {
-    const pesel = peselArg.split('').slice(0, 10);
-
-    const controlNumber = peselArg.split('').pop();
-
-    const multipliers = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
-
-    let sum = 0;
-    for (let i = 0; i < pesel.length; i++) {
-      sum += +pesel[i] * multipliers[i];
-    }
-
-    const result = (10 - (sum % 10)) % 10;
-
-    return +result === +controlNumber;
-  }
+  // getPeselData(peselArg: string): boolean {
+  //   const pesel = peselArg.split('').slice(0, 10);
+  //
+  //   const controlNumber = peselArg.split('').pop();
+  //
+  //   const multipliers = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+  //
+  //   let sum = 0;
+  //   for (let i = 0; i < pesel.length; i++) {
+  //     sum += +pesel[i] * multipliers[i];
+  //   }
+  //
+  //   const result = (10 - (sum % 10)) % 10;
+  //
+  //   return +result === +controlNumber;
+  // }
 
   getBirthDate(peselArg): string {
     return 'Date of birth is ' + peselArg.substring(0, 6);
@@ -76,9 +76,9 @@ export class FormComponent implements OnInit {
 
   getGender(peselArg): string {
     if (peselArg.charAt(9) % 2 === 0) {
-      return 'I am a woman';
+      return ' I am a woman';
     } else {
-      return 'I am a man';
+      return ' I am a man';
     }
   }
 

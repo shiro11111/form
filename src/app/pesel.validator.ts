@@ -1,7 +1,10 @@
-import {AbstractControl} from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 export function ValidatePesel(control: AbstractControl) {
-  if (control.value && control.value.length !== 11) {
+  if (control.value) {
+    if (control.value.length !== 11) {
+      return { invalidPesel: true };
+    }
     const pesel = control.value.split('').slice(0, 10);
 
     const controlNumber = control.value.split('').pop();
@@ -15,13 +18,14 @@ export function ValidatePesel(control: AbstractControl) {
 
     const result = (10 - (sum % 10)) % 10;
 
-    // console.log(+result !== +controlNumber);
-    // console.log(+control.value.substring(2, 4) > 12);
-    // console.log(+control.value.substring(4, 6) > 31);
+    // console.log(+result);
+    // console.log(+controlNumber);
+    // console.log(+control.value.substring(2, 4));
+    // console.log(+control.value.substring(4, 6));
 
     if ((+result !== +controlNumber) || (+control.value.substring(2, 4) > 12) || (+control.value.substring(4, 6) > 31)) {
-      return {invalidPesel: true};
+      return { invalidPesel: true };
     }
-  }
+}
   return null;
 }

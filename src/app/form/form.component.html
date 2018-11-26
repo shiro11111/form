@@ -16,9 +16,9 @@
   </mat-form-field>
 </form>
 
-<button (click)="onGetPeselInfo()">Check</button>
+<button mat-button (click)="onGetPeselInfo()">Check Pesel</button>
 <div *ngIf="peselInfo">{{ peselInfo }}</div>
-<p>{{ getPeselData('88555501832') }}</p>
+<!--<p>{{ getPeselData('88555501832') }}</p>-->
 
 
 

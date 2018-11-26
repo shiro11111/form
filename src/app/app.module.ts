@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormComponent} from './form/form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {ForbiddenValidatorDirective} from './forbidden-name.validator';
 import {ValidatePeselDirective} from './pesel-validator.directive';
 
@@ -25,7 +25,8 @@ import {ValidatePeselDirective} from './pesel-validator.directive';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
