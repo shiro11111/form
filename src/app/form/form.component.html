@@ -19,9 +19,10 @@
 <button mat-button (click)="onGetPeselInfo()">Check Pesel</button>
 <div *ngIf="peselInfo">{{ peselInfo }}</div>
 <!--<p>{{ getPeselData('88555501832') }}</p>-->
+<div *ngIf="form.get('pesel').errors?.invalidPesel">Invalid pesel!</div>
 
 
-
+<!--<pre>{{form.get('pesel').errors | json}}</pre>-->
 
 <!--<div *ngIf="form.get('name').errors?.forbiddenName">-->
   <!--Can't use that name!-->

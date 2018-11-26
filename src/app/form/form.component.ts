@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ValidatePesel} from '../pesel.validator';
-import {filter} from 'rxjs/operators';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidatePesel } from '../pesel.validator';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
@@ -35,7 +34,8 @@ export class FormComponent implements OnInit {
       ]),
       pesel: this.fb.control(null, [
           Validators.required,
-          Validators.pattern('^[0-9]*$')
+          Validators.pattern('^[0-9]*$'),
+          ValidatePesel
         ]
       )
     });
