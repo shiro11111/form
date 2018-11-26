@@ -107,5 +107,8 @@ export class FormComponent implements OnInit {
     let month = '';
   if()
   }
+
+
+  const birthDate = new Date(getBirthYearFromPesel(pesel), )
 }
 
