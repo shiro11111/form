@@ -14,8 +14,6 @@ export class FormComponent implements OnInit {
 
   peselInfo: string;
 
-  mockDate: Date = new Date(8, 4, 18);
-
   birthDate: Date = null;
   sex: string = null;
 
@@ -43,7 +41,10 @@ export class FormComponent implements OnInit {
           Validators.pattern('^[0-9]*$'),
           ValidatePesel
         ]
-      )
+      ),
+      email: this.fb.control(null, [
+        Validators.required
+      ])
     });
   }
 

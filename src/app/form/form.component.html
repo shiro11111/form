@@ -14,6 +14,13 @@
     <mat-error *ngIf="form.get('pesel').invalid">{{getPeselErrorMessage()}}</mat-error>
     <mat-error *ngIf="form.get('pesel').errors?.pattern">Only numbers</mat-error>
   </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="text" formControlName="email" required>
+    <mat-error *ngIf="form.get('email').errors?.required">You must enter a value</mat-error>
+  </mat-form-field>
+
 </form>
 
 <button mat-button (click)="onGetPeselInfo()">Check Pesel</button>
@@ -23,6 +30,10 @@
 
 {{ birthDate | date: 'dd-MM-yyyy' }}
 {{ sex }}
+
+
+
+
 <!--{{ getDateString('88051801832') | date: 'dd-MM-yyyy' }}-->
 
 
