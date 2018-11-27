@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatePesel } from '../pesel.validator';
 import { filter } from 'rxjs/operators';
+import { PeselUtil } from '../pesel.util';
 
 @Component({
   selector: 'app-form',
@@ -14,6 +15,9 @@ export class FormComponent implements OnInit {
   peselInfo: string;
 
   mockDate: Date = new Date(8, 4, 18);
+
+  birthDate: Date = null;
+  sex: string = null;
 
   constructor(private fb: FormBuilder) {
   }
@@ -55,27 +59,6 @@ export class FormComponent implements OnInit {
         '';
   }
 
-  // getPeselData(peselArg: string): boolean {
-  //   const pesel = peselArg.split('').slice(0, 10);
-  //
-  //   const controlNumber = peselArg.split('').pop();
-  //
-  //   const multipliers = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
-  //
-  //   let sum = 0;
-  //   for (let i = 0; i < pesel.length; i++) {
-  //     sum += +pesel[i] * multipliers[i];
-  //   }
-  //
-  //   const result = (10 - (sum % 10)) % 10;
-  //
-  //   return +result === +controlNumber;
-  // }
-
-  getBirthDate(peselArg): string {
-    return 'Date of birth is ' + peselArg.substring(0, 6);
-  }
-
   getGender(peselArg): string {
     if (peselArg.charAt(9) % 2 === 0) {
       return ' I am a woman';
@@ -85,30 +68,46 @@ export class FormComponent implements OnInit {
   }
 
   onGetPeselInfo(): void {
-    const value = this.form.get('pesel').value;
-    this.peselInfo = this.getBirthDate(value) + this.getGender(value);
+    // const value = this.form.get('pesel').value;
+    // this.peselInfo = this.getDateString(value) + this.getGender(value);
+    const peselArg = this.form.get('pesel').value;
+    this.birthDate = PeselUtil.getBirthDate(peselArg);
+    this.sex = PeselUtil.getSex(peselArg);
   }
 
-  getBirthYearFromPesel(pesel: string): string {
-    let birthYear = '';
-    if (+pesel.charAt(2) === 0 || 1) {
-      birthYear = '19' + pesel.substring(0, 2);
-    } else if (+pesel.charAt(2) === 2 || 3) {
-      birthYear = '20' + pesel.substring(0, 2);
-    } else if(+pesel.charAt(2) === 4 || 5) {
-      birthYear = '21' + pesel.substring(0, 2);
-    } else if(+pesel.charAt(2) === 6 || 7) {
-      birthYear = '22' + pesel.substring(0, 2);
-    }
-    return birthYear;
-  }
+  //
+  // getBirthYearFromPesel(peselArg: string): string {
+  //   let birthYear = '';
+  //   if (+peselArg.charAt(2) === 0 || 1) {
+  //     birthYear = '19' + peselArg.substring(0, 2);
+  //   } else if (+peselArg.charAt(2) === 2 || 3) {
+  //     birthYear = '20' + peselArg.substring(0, 2);
+  //   } else if (+peselArg.charAt(2) === 4 || 5) {
+  //     birthYear = '21' + peselArg.substring(0, 2);
+  //   } else if (+peselArg.charAt(2) === 6 || 7) {
+  //     birthYear = '22' + peselArg.substring(0, 2);
+  //   }
+  //   return birthYear;
+  // }
+  //
+  // getMonthFromPesel(peselArg: string): string {
+  //   let month = '';
+  // if (+peselArg.charAt(2) === 0) {
+  //   month = peselArg.substring(2, 4);
+  // } else if (+peselArg.charAt(2) === 2 || 3) {
+  //   month = '0' + peselArg.substring(2, 4);
+  // } else if (+peselArg.charAt(2) === 4 || 5) {
+  //   month = '0' + peselArg.substring(2, 4);
+  // } else if (+peselArg.charAt(2) === 6 || 7) {
+  //   month = '0' + peselArg.substring(2, 4);
+  // } else if (+peselArg.charAt(2) === 1) {
+  //   month = peselArg.substring(2, 4);
+  // }
+  // return month;
+  // }
 
-  getMonthFromPesel(pesel: string): string {
-    let month = '';
-  if()
-  }
-
-
-  const birthDate = new Date(getBirthYearFromPesel(pesel), )
+  // getDateString(pesel: string): Date {
+  //  return PeselUtil.getBirthDate(pesel);
+  // }
 }
 

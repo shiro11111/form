@@ -21,7 +21,9 @@
 <!--<p>{{ getPeselData('88555501832') }}</p>-->
 <div *ngIf="form.get('pesel').errors?.invalidPesel">Invalid pesel!</div>
 
-{{ mockDate | date: 'dd-MM-yyyy' }}
+{{ birthDate | date: 'dd-MM-yyyy' }}
+{{ sex }}
+<!--{{ getDateString('88051801832') | date: 'dd-MM-yyyy' }}-->
 
 
 <!--<pre>{{form.get('pesel').errors | json}}</pre>-->

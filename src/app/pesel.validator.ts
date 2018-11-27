@@ -17,13 +17,7 @@ export function ValidatePesel(control: AbstractControl) {
     }
 
     const result = (10 - (sum % 10)) % 10;
-
-    // console.log(+result);
-    // console.log(+controlNumber);
-    // console.log(+control.value.substring(2, 4));
-    // console.log(+control.value.substring(4, 6));
-
-    if ((+result !== +controlNumber) || (+control.value.substring(2, 4) > 12) || (+control.value.substring(4, 6) > 31)) {
+    if (+result !== +controlNumber) {
       return { invalidPesel: true };
     }
 }
