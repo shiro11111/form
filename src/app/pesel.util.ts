@@ -1,4 +1,3 @@
-import { Sex } from '../types/sex';
 import * as moment from 'moment';
 
 /**
