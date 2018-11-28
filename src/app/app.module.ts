@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import {ForbiddenValidatorDirective} from './forbidden-name.validator';
 import {ValidatePeselDirective} from './pesel-validator.directive';
+import { ValidateEmailDirective } from './email.validator.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {ValidatePeselDirective} from './pesel-validator.directive';
     AppComponent,
     FormComponent,
     ForbiddenValidatorDirective,
-    ValidatePeselDirective
+    ValidatePeselDirective,
+    ValidateEmailDirective
   ],
   imports: [
     BrowserModule,

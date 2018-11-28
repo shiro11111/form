@@ -15,21 +15,25 @@
     <mat-error *ngIf="form.get('pesel').errors?.pattern">Only numbers</mat-error>
   </mat-form-field>
 
+  <button mat-button (click)="onGetPeselInfo()">Check Pesel</button>
+  <div *ngIf="peselInfo">{{ peselInfo }}</div>
+  <!--<p>{{ getPeselData('88555501832') }}</p>-->
+  <div *ngIf="form.get('pesel').errors?.invalidPesel">Invalid pesel!</div>
+
+  {{ birthDate | date: 'dd-MM-yyyy' }}
+  {{ sex }}
+
+
   <mat-form-field>
     <mat-label>Email</mat-label>
-    <input matInput type="text" formControlName="email" required>
+    <input matInput type="text" formControlName="email" required appValidateEmail>
     <mat-error *ngIf="form.get('email').errors?.required">You must enter a value</mat-error>
+    <mat-error *ngIf="form.get('email').errors?.email">Invalid Email!</mat-error>
   </mat-form-field>
 
 </form>
 
-<button mat-button (click)="onGetPeselInfo()">Check Pesel</button>
-<div *ngIf="peselInfo">{{ peselInfo }}</div>
-<!--<p>{{ getPeselData('88555501832') }}</p>-->
-<div *ngIf="form.get('pesel').errors?.invalidPesel">Invalid pesel!</div>
-
-{{ birthDate | date: 'dd-MM-yyyy' }}
-{{ sex }}
+<pre>{{form.get('email').errors | json}}</pre>
 
 
 

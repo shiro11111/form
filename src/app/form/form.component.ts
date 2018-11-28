@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatePesel } from '../pesel.validator';
 import { filter } from 'rxjs/operators';
 import { PeselUtil } from '../pesel.util';
+import { ValidateEmail } from '../email.validator';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +14,7 @@ export class FormComponent implements OnInit {
   form: FormGroup;
 
   peselInfo: string;
+  emailInfo: string;
 
   birthDate: Date = null;
   sex: string = null;
